@@ -26,12 +26,17 @@ describe('extract', function () {
 	it('extracts the aztec code from a DB Online Ticket and returns a buffer of the raw data', function () {
 		const promises = testFiles.map(( { raw, pdf } ) => {
 			const pdfBuffer = fs.readFileSync(pdf);
-			let expected = fs.readFileSync(raw);
-			if (expected.length === 4 && expected.toString() === 'null') expected = null;
+			const expected = fs.readFileSync(raw);
 			const actual = extract(pdfBuffer);
 			return expect(actual).to.become(expected);
 		})
 
 		return Promise.all(promises);
+	})
+
+	it('rejects when no suitable image is found', function () {
+		const pdf = fs.readFileSync( path.resolve(__dirname, 'pdfs/empty.pdf') );
+
+		return expect(extract(pdf)).to.be.rejected;
 	})
 })
