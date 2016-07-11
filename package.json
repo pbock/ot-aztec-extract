@@ -1,11 +1,12 @@
 {
   "name": "ot-aztec-extract",
   "version": "0.1.0",
-  "description": "",
+  "description": "Single-purpose module to extract aztec codes from Deutsche Bahn's PDF online tickets",
   "main": "index.js",
   "scripts": {
     "test": "mocha"
   },
+  "repository": "pbock/ot-aztec-extract",
   "author": "Philipp Bock <p@philippbock.de> (http://philippbock.de/)",
   "license": "MIT",
   "devDependencies": {
